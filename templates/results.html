@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Results - AesthetIQ</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Dominant Colors and Complementary Colors</h1>
+    <div>
+        <h2>Dominant Colors:</h2>
+        <ul>
+            {% for color in colors %}
+                <li style="background-color: {{ color }}; padding: 10px;">{{ color }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div>
+        <h2>Complementary Colors:</h2>
+        <ul>
+            {% for color in complementary_colors %}
+                <li style="background-color: {{ color }}; padding: 10px;">{{ color }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div>
+        <h2>Furniture Suggestions:</h2>
+        <ul>
+            {% for suggestion in furniture %}
+                <li>{{ suggestion }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div>
+        <h2>Plate Suggestions:</h2>
+        <ul>
+            {% for suggestion in plates %}
+                <li>{{ suggestion }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div>
+        <h2>Image with Complementary Colors:</h2>
+        <img src="{{ complementary_image }}" alt="Image with Complementary Colors">
+    </div>
+</body>
+</html>
