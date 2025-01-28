@@ -5,44 +5,132 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Results - AesthetIQ</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #000; /* Black background */
+            color: #32CD32; /* Green font color */
+        }
+
+        h1, h2 {
+            text-align: center;
+            color: #fff; /* White font color for headings */
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 20px auto;
+        }
+
+        .color-list {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            list-style: none;
+            padding: 0;
+        }
+
+        .color-list li {
+            width: 100px;
+            height: 100px;
+            margin: 10px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #242222;
+            font-weight: bold;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .suggestions {
+            margin: 20px 0;
+            padding: 10px;
+            background-color: #333; /* Dark background for suggestion boxes */
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .suggestions ul {
+            padding: 0;
+            list-style: none;
+        }
+
+        .suggestions ul li {
+            padding: 10px;
+            margin: 5px 0;
+            background-color: #444; /* Dark background for suggestion items */
+            border-left: 5px solid #32CD32; /* Green left border */
+            border-radius: 4px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            color: #fff; /* White text color for suggestions */
+        }
+
+        .image-preview {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .image-preview img {
+            max-width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+    </style>
 </head>
 <body>
-    <h1>Dominant Colors and Complementary Colors</h1>
-    <div>
-        <h2>Dominant Colors:</h2>
-        <ul>
-            {% for color in colors %}
-                <li style="background-color: {{ color }}; padding: 10px;">{{ color }}</li>
-            {% endfor %}
-        </ul>
-    </div>
-    <div>
-        <h2>Complementary Colors:</h2>
-        <ul>
-            {% for color in complementary_colors %}
-                <li style="background-color: {{ color }}; padding: 10px;">{{ color }}</li>
-            {% endfor %}
-        </ul>
-    </div>
-    <div>
-        <h2>Furniture Suggestions:</h2>
-        <ul>
-            {% for suggestion in furniture %}
-                <li>{{ suggestion }}</li>
-            {% endfor %}
-        </ul>
-    </div>
-    <div>
-        <h2>Plate Suggestions:</h2>
-        <ul>
-            {% for suggestion in plates %}
-                <li>{{ suggestion }}</li>
-            {% endfor %}
-        </ul>
-    </div>
-    <div>
-        <h2>Image with Complementary Colors:</h2>
-        <img src="{{ complementary_image }}" alt="Image with Complementary Colors">
+    <div class="container">
+        <h1>Results - AesthetIQ</h1>
+
+        <!-- Dominant Colors -->
+        <div>
+            <h2>Dominant Colors:</h2>
+            <ul class="color-list">
+                {% for color in colors %}
+                    <li style="background-color: {{ color }};">{{ color }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <!-- Complementary Colors -->
+        <div>
+            <h2>Complementary Colors:</h2>
+            <ul class="color-list">
+                {% for color in complementary_colors %}
+                    <li style="background-color: {{ color }};">{{ color }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <!-- Furniture Suggestions -->
+        <div class="suggestions">
+            <h2>Furniture Suggestions:</h2>
+            <ul>
+                {% for suggestion in furniture %}
+                    <li>{{ suggestion }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <!-- Plate Suggestions -->
+        <div class="suggestions">
+            <h2>Plate Suggestions:</h2>
+            <ul>
+                {% for suggestion in plates %}
+                    <li>{{ suggestion }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <!-- Complementary Image -->
+        <div class="image-preview">
+            <h2>Image with Complementary Colors:</h2>
+            <img src="{{ complementary_image }}" alt="Image with Complementary Colors">
+        </div>
     </div>
 </body>
 </html>
